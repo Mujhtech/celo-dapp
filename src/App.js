@@ -52,8 +52,6 @@ function App() {
 
       const admin = await contract.methods.admin().call();
 
-      console.log(accounts[0]);
-
       setWeb3(web3);
       setAccounts(accounts);
       setContract(contract);
@@ -76,9 +74,11 @@ function App() {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line
     if (isReady()) {
       updateCandidate();
     }
+    // eslint-disable-next-line
   }, [accounts, contract, web3, admin]);
 
   function onChange(name, e) {
