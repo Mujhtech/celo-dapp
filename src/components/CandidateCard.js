@@ -1,19 +1,20 @@
 import React from 'react'
 import {
     Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button
+    CardTitle, CardSubtitle, Button, Badge
 } from 'reactstrap';
 
-export default function CandidateCard() {
+export default function CandidateCard({candidate, index, enableVoteModal}) {
     return (
         <div>
             <Card>
-                <CardImg top width="100%" src="https://avatars.githubusercontent.com/mujhtech" alt="Card image cap" />
+                <CardImg top width="100%" src={candidate[1]} alt="Card image cap" />
                 <CardBody>
-                    <CardTitle tag="h5">Muhideen Mujeeb</CardTitle>
-                    <CardSubtitle tag="h6" className="mb-2 text-muted">Software Developer</CardSubtitle>
-                    <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                    <Button>Vote</Button>
+                    <CardTitle tag="h5">{candidate[0]}</CardTitle>
+                    <CardSubtitle tag="h6" className="mb-2 text-muted">{candidate[2]}</CardSubtitle>
+                    <CardText>{candidate[3]}</CardText>
+                    <Badge style={{background: '#000'}}>{candidate[4]} Votes</Badge>
+                    <Button onClick={() => enableVoteModal(index, candidate)}>Vote</Button>
                 </CardBody>
             </Card>
         </div>

@@ -79,6 +79,11 @@ contract EvwpContract {
 
     uint internal candidatesLength = 0;
     address internal cUsdTokenAddress = 0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1;
+    
+    constructor(
+    ) {
+        admin = msg.sender;
+    }
 
     struct Candidate {
         string name;
@@ -145,7 +150,7 @@ contract EvwpContract {
         _;
     }
     
-    function vote(uint _index, uint256 amount) public payable  {
+    function vote(uint _index, uint256 amount, uint256 value) public payable  {
         require(
           IERC20Token(cUsdTokenAddress).transferFrom(
             msg.sender,
@@ -155,7 +160,7 @@ contract EvwpContract {
           "Transfer failed."
         );
         availableFunds = availableFunds.add(amount);
-        candidates[_index].vote++;
+        candidates[_index].vote += value;
     }
     
     function getCandidatesLength() public view returns (uint) {
