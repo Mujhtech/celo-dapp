@@ -26,7 +26,7 @@ const Header = ({balance}) => {
           <Collapse isOpen={isOpen} navbar className="ml-auto">
             <Nav className="mr-auto" navbar>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">Support Us</NavLink>
+                <NavLink href="https://github.com/mujhtech/celo-dapp">Please don't forget to star</NavLink>
               </NavItem>
             </Nav>
             <NavbarText>Balance: <Badge color="secondary">{balance}cUSD</Badge></NavbarText>
