@@ -1,6 +1,11 @@
 [
 	{
 		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
 		"name": "admin",
 		"outputs": [
 			{
@@ -87,6 +92,11 @@
 			{
 				"internalType": "uint256",
 				"name": "amount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
 				"type": "uint256"
 			}
 		],
