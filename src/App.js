@@ -12,7 +12,7 @@ import CandidateModal from "./components/CandidateModal";
 import Loading from "./Loading";
 
 const ERC20_DECIMALS = 18;
-const evwpContractAddress = "0x3b9661C4F4f390F043521f7b1718299a08CB0b4E";
+const evwpContractAddress = "0x4208f1d98e486d497c6fD07DD80526Db313B0c49";
 const cUSDContractAddress = "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1";
 
 let kit;
@@ -89,12 +89,14 @@ function App() {
   }
 
   async function approve(_price) {
+    const new_amount = new BigNumber(_price).shiftedBy(ERC20_DECIMALS);
+    const _amount = new_amount.toString();
     const cUSDContract = new kit.web3.eth.Contract(
       Erc20Abi,
       cUSDContractAddress
     );
     const result = await cUSDContract.methods
-      .approve(evwpContractAddress, _price)
+      .approve(evwpContractAddress, _amount)
       .send({ from: accounts[0] });
     return result;
   }
@@ -147,6 +149,8 @@ function App() {
     try {
       const new_amount = new BigNumber(amount).shiftedBy(ERC20_DECIMALS);
       const _amount = new_amount.toString();
+      console.log(new_amount);
+      console.log(_amount);
       await contract.methods.vote(id, _amount, value).send({ from: accounts[0] });
       addToast("🎉 Vote Successful", { appearance: "success", autoDismiss: true });
       await updateCandidate();
