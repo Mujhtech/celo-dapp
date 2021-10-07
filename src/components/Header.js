@@ -12,7 +12,7 @@ import {
   Badge
 } from 'reactstrap';
 
-const Header = (props) => {
+const Header = ({balance}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -29,7 +29,7 @@ const Header = (props) => {
                 <NavLink href="https://github.com/reactstrap/reactstrap">Support Us</NavLink>
               </NavItem>
             </Nav>
-            <NavbarText>Balance: <Badge color="secondary">0cUSD</Badge></NavbarText>
+            <NavbarText>Balance: <Badge color="secondary">{balance}cUSD</Badge></NavbarText>
           </Collapse>
         </Container>
       </Navbar>
